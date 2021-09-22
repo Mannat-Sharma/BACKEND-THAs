@@ -1,11 +1,6 @@
 const express = require('express');
 const app = express();
 
-// POST -> CREATE
-// GET -> READ
-// PUT -> UPDATE
-// DELETE -> DELETE
-
 app.get('/', (req, res) => {
     res.status[200].send("Hello there👋")
     // res.send == return
@@ -20,7 +15,21 @@ app.get('/user', (req, res) => {
 })
 
 app.get('/user/:username/userId/:id', (req, res) => {
-    console.log(req.query)
     res.send(req.params)
 })
+
+app.get('/ab(cd)?e', function (req, res) {
+    res.send('ab(cd)?e or abe')
+})
+
+app.get('/ab*cd', function (req, res) {
+    // ab*cd = ab..cd
+    res.send('ab*cd')
+})
+
+app.get('/ab+cd', function (req, res) {
+    // ab+cd = abbbbbbcd
+    res.send('ab*cd')
+})
+
 app.listen(5000);
